@@ -1,13 +1,7 @@
 import tensorflow as tf
 
 
-def bpr_loss(pos_scores, neg_scores, args):
-    """
-    Args:
-            u_embeds (tf.Tensor): User embeddings to calculate loss.
-            pos_embeds (tf.Tensor): Positive item embeddings to calculate loss.
-            neg_embeds (tf.Tensor): Negative item embeddings to calculate loss.
-    """
+def bpr_loss(pos_scores, neg_scores):
     pairwise_obj = pos_scores - neg_scores
     loss = tf.reduce_mean(tf.math.softplus(-pairwise_obj))
     return loss
@@ -41,12 +35,6 @@ def cpr_loss(pos_scores, neg_scores, args):
 
 
 def mask_bpr_loss(pos_scores, neg_scores, mask):
-    """
-    Args:
-            u_embeds (tf.Tensor): User embeddings to calculate loss.
-            pos_embeds (tf.Tensor): Positive item embeddings to calculate loss.
-            neg_embeds (tf.Tensor): Negative item embeddings to calculate loss.
-    """
     loss = -tf.reduce_mean(mask * tf.math.log_sigmoid(pos_scores - neg_scores))
     return loss
 

@@ -73,8 +73,6 @@ class Dataset(object):
         for name in args.eval_types:
             self.evalsets[name] = load_csv_2dict(data_dir, name)
 
-        # self.n_user = len(self.train)
-        # self.n_item = len(self.train_inverse)
         self.n_user = max(self.train.keys()) + 1
         self.n_item = max(self.train_inverse.keys()) + 1
 

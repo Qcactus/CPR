@@ -2,12 +2,12 @@ import random
 import numpy as np
 from math import ceil
 from recq.tools.monitor import Timer
-from recq.cyutils.sampler import CyCPRSampler, CyPairNegSampler, CyPointNegSampler, CyDICENegSampler
+from recq.cyutils.sampler import CyCPRSampler, CyPairNegSampler, CyDICENegSampler
 from recq.cyutils.labeler import CyLabeler
 
 
 def batch_iterator(data, batch_size, drop_last=False):
-    """Generate batches without padding or droplast.
+    """Generate batches.
 
     Args:
         data (list or numpy.ndarray): Input data.
@@ -20,17 +20,6 @@ def batch_iterator(data, batch_size, drop_last=False):
         n_batch = ceil(length / batch_size)
     for i in range(n_batch):
         yield data[i * batch_size:(i + 1) * batch_size]
-
-
-def sample_ints_excludes(high, sample_rate, excludes):
-    # sample one value from [0, high) \ excludes
-    samples = []
-    while len(samples) < sample_rate:
-        value = random.randint(0, high - 1)
-        if value not in excludes and value not in samples:
-            samples.append(value)
-    samples = samples if sample_rate > 1 else samples[0]
-    return samples
 
 
 class BPRSampler(object):
@@ -166,10 +155,7 @@ class DICESampler(object):
         users = self.u_interacts[idx]
         pos_items = self.i_interacts[idx]
         rand = np.random.rand(self.sample_size * 2).astype(np.float32)
-        # timer = Timer()
-        # timer.start("Sample")
         self.sampler.sample(users, pos_items, rand, self.margin)
-        # timer.stop()
         return zip(batch_iterator(users, batch_size=self.batch_size),
                    batch_iterator(pos_items, batch_size=self.batch_size),
                    batch_iterator(self.neg_items, batch_size=self.batch_size),

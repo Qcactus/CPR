@@ -242,7 +242,7 @@ class DICE(object):
         self.loss_pop = mask_bpr_loss(
             n_score_pop, p_score_pop, self.batch_neg_mask) + mask_bpr_loss(
                 p_score_pop, n_score_pop, 1 - self.batch_neg_mask)
-        self.loss_total = bpr_loss(p_score_total, n_score_total, args)
+        self.loss_total = bpr_loss(p_score_total, n_score_total)
 
         user_int = tf.concat([users_int, users_int], 0)
         user_pop = tf.concat([users_pop, users_pop], 0)

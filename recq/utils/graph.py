@@ -30,7 +30,7 @@ def create_norm_adj(u_interacts, i_interacts, n_user, n_item):
     D = np.array(adj.sum(axis=1))
     # Normalize adjacency matrix.
     row_sum = D.ravel()
-    # 1. Symmetric normalized Laplacian
+    # Symmetric normalized Laplacian
     s_diag_flat = np.power(row_sum,
                            -0.5,
                            out=np.zeros_like(row_sum),

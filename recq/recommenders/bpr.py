@@ -159,7 +159,7 @@ class BPR(object):
                              self.bs, self.h, args)
             neg_scores = mlp(self.batch_u_embeds, batch_neg_i_embeds, self.Ws,
                              self.bs, self.h, args)
-        self.mf_loss = bpr_loss(pos_scores, neg_scores, args)
+        self.mf_loss = bpr_loss(pos_scores, neg_scores)
 
     def create_reg_loss(self, args):
         self.reg_loss = args.reg * l2_embed_loss(self.all_embeds_0)
