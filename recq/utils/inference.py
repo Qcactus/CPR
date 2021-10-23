@@ -11,6 +11,5 @@ def mlp(u_embeds, i_embeds, Ws, bs, h, args):
     mlp_output = tf.concat([u_embeds, i_embeds], axis=1)
     for i in range(len(args.weight_sizes)):
         mlp_output = tf.nn.relu(tf.matmul(mlp_output, Ws[i]) + bs[i])
-    output = tf.reshape(
-        tf.matmul(tf.concat([mf_output, mlp_output], axis=1), h), [-1])
+    output = tf.reshape(tf.matmul(tf.concat([mf_output, mlp_output], axis=1), h), [-1])
     return output

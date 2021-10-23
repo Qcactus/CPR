@@ -9,7 +9,7 @@ def sp_mat_2_sp_tensor(X):
 
     Returns:
         tf.SparseTensor: SparseTensor after conversion.
-        
+
     """
     coo = X.tocoo().astype(np.float32)
     indices = np.mat([coo.row, coo.col]).transpose()
@@ -25,8 +25,8 @@ def init_variables(sess, saver, load_model, model_dir):
             print("Load model: {}".format(load_model))
         except:
             raise IOError(
-                "Failed to find any matching files for model {0}.".format(
-                    load_model))
+                "Failed to find any matching files for model {0}.".format(load_model)
+            )
 
 
 def save_model(sess, saver, verbose_name, epoch, model_dir):

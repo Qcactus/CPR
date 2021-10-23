@@ -31,8 +31,6 @@ You can safely ignore the warnings in the output of this command.
 
 Here we list some commands that reproduce the results presented in our paper.
 
-Change the value after `--gpu_id` to the ID of your GPU before running. To change other default parameters, see [parser.py](recq/tools/parser.py).
-
 ### CPR
 
 The following commands can reproduce the results of CPR on 4 backbones (MF, LightGCN, NeuMF, NGCF) and 2 datasets (MovieLens, Netflix).
@@ -42,41 +40,41 @@ The following commands can reproduce the results of CPR on 4 backbones (MF, Ligh
 (MF is equivalent to 0-layer LightGCN.)
 
 ```shell
-python CPR.py --dataset movielens_10m --lr 0.0001 --reg 0.001 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --sample_rate 3 --sample_ratio 3 --eval_types valid test --eval_epoch 4 --early_stop 10 --gpu_id 0
+python CPR.py --dataset movielens_10m --lr 0.0001 --reg 0.001 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --sample_rate 3 --sample_ratio 3 --eval_types valid test --eval_epoch 4 --early_stop 10 
 ```
 
 ```shell
-python CPR.py --dataset netflix --lr 0.0001 --reg 0.001 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --sample_rate 3 --sample_ratio 2 --eval_types valid test --eval_epoch 4 --early_stop 10 --gpu_id 0
+python CPR.py --dataset netflix --lr 0.0001 --reg 0.001 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --sample_rate 3 --sample_ratio 2 --eval_types valid test --eval_epoch 4 --early_stop 10 
 ```
 
 #### LightGCN
 
 ```shell
-python CPR.py --dataset movielens_10m --lr 0.001 --reg 0.01 --ks 20 --batch_size 2048 --n_layer 3 --embed_type lightgcn --sample_rate 8 --sample_ratio 7 --eval_types valid test --eval_epoch 1 --early_stop 10 --gpu_id 0
+python CPR.py --dataset movielens_10m --lr 0.001 --reg 0.01 --ks 20 --batch_size 2048 --n_layer 3 --embed_type lightgcn --sample_rate 8 --sample_ratio 7 --eval_types valid test --eval_epoch 1 --early_stop 10 
 ```
 
 ```shell
-python CPR.py --dataset netflix --lr 0.001 --reg 0.0001 --ks 20 --batch_size 2048 --n_layer 3 --embed_type lightgcn --sample_rate 7 --sample_ratio 4 --eval_types valid test --eval_epoch 1 --early_stop 10 --gpu_id 0
+python CPR.py --dataset netflix --lr 0.001 --reg 0.0001 --ks 20 --batch_size 2048 --n_layer 3 --embed_type lightgcn --sample_rate 7 --sample_ratio 4 --eval_types valid test --eval_epoch 1 --early_stop 10 
 ```
 
 #### NeuMF
 
 ```shell
-python CPR.py --dataset movielens_10m --lr 0.001 --reg 0.0001 --weight_reg 0.01 --weight_sizes 256 --ks 20 --batch_size 2048 --eval_batch_size 16 --n_layer 0 --embed_type lightgcn --inference_type mlp --sample_rate 1 --sample_ratio 4 --eval_types valid test --eval_epoch 10 --early_stop 5 --gpu_id 0
+python CPR.py --dataset movielens_10m --lr 0.001 --reg 0.0001 --weight_reg 0.01 --weight_sizes 256 --ks 20 --batch_size 2048 --eval_batch_size 16 --n_layer 0 --embed_type lightgcn --inference_type mlp --sample_rate 1 --sample_ratio 4 --eval_types valid test --eval_epoch 10 --early_stop 5 
 ```
 
 ```shell
-python CPR.py --dataset netflix --lr 0.001 --reg 0.0001 --weight_reg 0.01 --weight_sizes 256 --ks 20 --batch_size 2048 --eval_batch_size 16 --n_layer 0 --embed_type lightgcn --inference_type mlp --sample_rate 1 --sample_ratio 6 --eval_types valid test --eval_epoch 10 --early_stop 5 --gpu_id 0
+python CPR.py --dataset netflix --lr 0.001 --reg 0.0001 --weight_reg 0.01 --weight_sizes 256 --ks 20 --batch_size 2048 --eval_batch_size 16 --n_layer 0 --embed_type lightgcn --inference_type mlp --sample_rate 1 --sample_ratio 6 --eval_types valid test --eval_epoch 10 --early_stop 5 
 ```
 
 #### NGCF
 
 ```shell
-python CPR.py --dataset movielens_10m --lr 0.001 --reg 0.01 --weight_reg 0 --ks 20 --batch_size 2048 --n_layer 3 --embed_type ngcf --sample_rate 1.5 --sample_ratio 5 --eval_types valid test --eval_epoch 1 --early_stop 10 --gpu_id 0
+python CPR.py --dataset movielens_10m --lr 0.001 --reg 0.01 --weight_reg 0 --ks 20 --batch_size 2048 --n_layer 3 --embed_type ngcf --sample_rate 1.5 --sample_ratio 5 --eval_types valid test --eval_epoch 1 --early_stop 10 
 ```
 
 ```shell
-python CPR.py --dataset netflix --lr 0.0001 --reg 0.001 --weight_reg 0.01 --ks 20 --batch_size 2048 --n_layer 3 --embed_type ngcf --sample_rate 3 --sample_ratio 4 --eval_types valid test --eval_epoch 4 --early_stop 10 --gpu_id 0
+python CPR.py --dataset netflix --lr 0.0001 --reg 0.001 --weight_reg 0.01 --ks 20 --batch_size 2048 --n_layer 3 --embed_type ngcf --sample_rate 3 --sample_ratio 4 --eval_types valid test --eval_epoch 4 --early_stop 10 
 ```
 
 ### Baselines
@@ -86,31 +84,31 @@ We also implement some of the baselines. The following commands can reproduce th
 #### BPR
 
 ```shell
-python BPR.py --dataset movielens_10m --lr 0.0001 --reg 0 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --eval_types valid test --eval_epoch 4 --early_stop 10 --gpu_id 0
+python BPR.py --dataset movielens_10m --lr 0.0001 --reg 0 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --eval_types valid test --eval_epoch 4 --early_stop 10 
 ```
 
 ```shell
-python BPR.py --dataset netflix --lr 0.0001 --reg 0.00001 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --eval_types valid test --eval_epoch 4 --early_stop 10 --gpu_id 0
+python BPR.py --dataset netflix --lr 0.0001 --reg 0.00001 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --eval_types valid test --eval_epoch 4 --early_stop 10 
 ```
 
 #### UBPR
 
 ```shell
-python UBPR.py --dataset movielens_10m --lr 0.0001 --reg 0.001 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --ps_pow 0.8 --clip 0 --eval_types valid test --eval_epoch 4 --early_stop 10 --gpu_id 0
+python UBPR.py --dataset movielens_10m --lr 0.0001 --reg 0.001 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --ps_pow 0.8 --clip 0 --eval_types valid test --eval_epoch 4 --early_stop 10 
 ```
 
 ```shell
-python UBPR.py --dataset netflix --lr 0.0001 --reg 0.0001 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --ps_pow 0.7 --clip 0 --eval_types valid test --eval_epoch 4 --early_stop 10 --gpu_id 0
+python UBPR.py --dataset netflix --lr 0.0001 --reg 0.0001 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --ps_pow 0.7 --clip 0 --eval_types valid test --eval_epoch 4 --early_stop 10 
 ```
 
 #### DICE
 
 ```shell
-python DICE.py --dataset movielens_10m --lr 0.0001 --reg 0.01 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --int_weight 9 --pop_weight 9 --dis_pen 0.0001 --margin 10 --margin_decay 0.9 --loss_decay 0.9 --eval_types valid test --eval_epoch 4 --early_stop 10 --gpu_id 0
+python DICE.py --dataset movielens_10m --lr 0.0001 --reg 0.01 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --int_weight 9 --pop_weight 9 --dis_pen 0.0001 --margin 10 --margin_decay 0.9 --loss_decay 0.9 --eval_types valid test --eval_epoch 4 --early_stop 10 
 ```
 
 ```shell
-python DICE.py --dataset netflix --lr 0.0001 --reg 0.01 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --int_weight 9 --pop_weight 9 --dis_pen 0.0001 --margin 40 --margin_decay 0.9 --loss_decay 0.9 --eval_types valid test --eval_epoch 4 --early_stop 10 --gpu_id 0
+python DICE.py --dataset netflix --lr 0.0001 --reg 0.01 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --int_weight 9 --pop_weight 9 --dis_pen 0.0001 --margin 40 --margin_decay 0.9 --loss_decay 0.9 --eval_types valid test --eval_epoch 4 --early_stop 10 
 ```
 
 ## Output
@@ -118,7 +116,7 @@ python DICE.py --dataset netflix --lr 0.0001 --reg 0.01 --ks 20 --batch_size 204
 Here is an example of the output log. It is the output of command:
 
 ```shell
-python CPR.py --dataset movielens_10m --lr 0.0001 --reg 0.001 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --sample_rate 3 --sample_ratio 3 --eval_types valid test --eval_epoch 4 --early_stop 10 --gpu_id 0
+python CPR.py --dataset movielens_10m --lr 0.0001 --reg 0.001 --ks 20 --batch_size 2048 --n_layer 0 --embed_type lightgcn --sample_rate 3 --sample_ratio 3 --eval_types valid test --eval_epoch 4 --early_stop 10 
 ```
 
 ```

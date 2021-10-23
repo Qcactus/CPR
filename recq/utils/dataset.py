@@ -22,8 +22,14 @@ def print_dataset_info(dataset):
     max_d_u = max(len(x) for x in dataset.values())
     min_d_i = min(len(x) for x in inverse.values())
     max_d_i = max(len(x) for x in inverse.values())
-    print("Number of users =", n_user, ", Number of items =", n_item,
-          ", Number of interactions =", n_interact)
+    print(
+        "Number of users =",
+        n_user,
+        ", Number of items =",
+        n_item,
+        ", Number of interactions =",
+        n_interact,
+    )
     print("Sparsity:", n_interact / (n_user * n_item))
     print("Min degree (U) =", min_d_u, ", Max degree (U) =", max_d_u)
     print("Min degree (I) =", min_d_i, ", Max degree (I) =", max_d_i)
@@ -31,8 +37,8 @@ def print_dataset_info(dataset):
 
 def get_degrees(dataset, n_node):
     degrees = np.array(
-        [len(dataset[u]) if u in dataset else 0 for u in range(n_node)],
-        dtype=np.int32)
+        [len(dataset[u]) if u in dataset else 0 for u in range(n_node)], dtype=np.int32
+    )
     return degrees
 
 
@@ -53,9 +59,10 @@ def print_group_info(n_group, groups, degrees):
     for i in range(n_group):
         group_i = degrees[groups == i]
         print(
-            "Group {:2d}: Number of nodes = {:6d}, Sum of degrees = {:7d}, Min of degrees = {:4d}, Max of degrees = {:5d}"
-            .format(i, group_i.size, group_i.sum(), group_i.min(),
-                    group_i.max()))
+            "Group {:2d}: Number of nodes = {:6d}, Sum of degrees = {:7d}, Min of degrees = {:4d}, Max of degrees = {:5d}".format(
+                i, group_i.size, group_i.sum(), group_i.min(), group_i.max()
+            )
+        )
 
 
 class Dataset(object):
@@ -87,8 +94,7 @@ class Dataset(object):
         self.i_degrees = get_degrees(self.train_inverse, self.n_item)
 
         self.train = [
-            self.train[u] if u in self.train else []
-            for u in range(self.n_user)
+            self.train[u] if u in self.train else [] for u in range(self.n_user)
         ]
         self.train_inverse = [
             self.train_inverse[i] if i in self.train_inverse else []
@@ -122,7 +128,8 @@ class Dataset(object):
                 print("[ train set ]")
                 print_group_info(self.n_i_group, self.i_groups, self.i_degrees)
                 for name in args.eval_types:
-                    i_degrees = get_degrees(invert_dict(self.evalsets[name]),
-                                            self.n_item)
+                    i_degrees = get_degrees(
+                        invert_dict(self.evalsets[name]), self.n_item
+                    )
                     print("[ {} set ]".format(name))
                     print_group_info(self.n_i_group, self.i_groups, i_degrees)

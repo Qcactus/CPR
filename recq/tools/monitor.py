@@ -8,6 +8,9 @@ class Timer(object):
 
     def stop(self, msg_stop=""):
         self.stop_time = time()
-        print(self.msg, ':',
-              "{:10.5f}".format(self.stop_time - self.start_time),
-              's' + ((' | ' + msg_stop) if msg_stop else ""))
+        print(
+            self.msg,
+            ":",
+            "{:10.5f}".format(self.stop_time - self.start_time),
+            "s" + ((" | " + msg_stop) if msg_stop else ""),
+        )
