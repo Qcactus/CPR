@@ -1,6 +1,6 @@
 # CPR
 
-TODO: paper brief
+TensorFlow implementation of our paper "Cross Pairwise Ranking for Unbiased Item Recommendation" (WWW'22).
 
 ## Requirements
 
@@ -13,7 +13,7 @@ TODO: paper brief
 
 And make sure GCC has been installed in your environment.
 
-## Data
+## Datasets
 
 The preprocessed data have already been placed in the `data/` folder. See [data_preprocess.py](data_preprocess.py) if you want to know how they were generated from original data.
 
@@ -152,3 +152,7 @@ NDCG      @20 :   0.12209
 ARP       @20 :1071.91736
 ============================================================================================================================================
 ```
+
+## Citation
+
+If you use our codes in your research, please cite our paper.
