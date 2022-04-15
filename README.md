@@ -2,6 +2,25 @@
 
 TensorFlow implementation of our paper "Cross Pairwise Ranking for Unbiased Item Recommendation" (WWW'22).
 
+## Citation
+
+If you want to use our codes and datasets in your research, please cite:
+
+```
+@inproceedings{CPR22,
+  author    = {Qi Wan and
+               Xiangnan He and
+               Xiang Wang and
+               Jiancan Wu and
+               Wei Guo and
+               Ruiming Tang},
+  title     = {Cross Pairwise Ranking for Unbiased Item Recommendation},
+  booktitle = {Proceedings of the ACM Web Conference 2022 (WWW ’22), April 25–29, 2022, Virtual Event, Lyon, France.},
+  year      = {2022},
+}
+```
+
+
 ## Requirements
 
 - python=3.6
