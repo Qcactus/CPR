@@ -7,16 +7,12 @@ TensorFlow implementation of our paper "Cross Pairwise Ranking for Unbiased Item
 If you want to use our codes and datasets in your research, please cite:
 
 ```
-@inproceedings{CPR22,
-  author    = {Qi Wan and
-               Xiangnan He and
-               Xiang Wang and
-               Jiancan Wu and
-               Wei Guo and
-               Ruiming Tang},
-  title     = {Cross Pairwise Ranking for Unbiased Item Recommendation},
-  booktitle = {Proceedings of the ACM Web Conference 2022 (WWW ’22), April 25–29, 2022, Virtual Event, Lyon, France.},
-  year      = {2022},
+@inproceedings{cpr22,
+  title={Cross Pairwise Ranking for Unbiased Item Recommendation},
+  author={Wan, Qi and He, Xiangnan and Wang, Xiang and Wu, Jiancan and Guo, Wei and Tang, Ruiming},
+  booktitle={Proceedings of the ACM Web Conference 2022},
+  pages={2370--2378},
+  year={2022}
 }
 ```
 
@@ -171,7 +167,3 @@ NDCG      @20 :   0.12209
 ARP       @20 :1071.91736
 ============================================================================================================================================
 ```
-
-## Citation
-
-If you use our codes in your research, please cite our paper.
